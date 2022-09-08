@@ -77,31 +77,35 @@ echo_reply_markup = InlineKeyboardMarkup(row_width=2).add(
 # Просто текст
 @dp.message_handler()
 async def echo(message: types.Message):
-    for value in getUsers().values():
-        if value['tgid'] != currentID and currentID == message.from_user.id:
-            await bot.send_message(value['tgid'], message.text)
     if message.from_user.id != currentID:
         await bot.send_message(message.from_user.id, "Все интересующие вас вопросы, можете уточнить у нашего менеджера: @MrJamesBrown", reply_markup=echo_reply_markup)
+    else:
+        for value in getUsers().values():
+            if value['tgid'] != currentID and currentID == message.from_user.id:
+                await bot.send_message(value['tgid'], message.text)
 
 
 # Текст с фото
 @dp.message_handler(content_types=["photo"])
 async def echoPhoto(message: types.Message):
-    for value in getUsers().values():
-        if value['tgid'] != currentID and currentID == message.from_user.id:
-            await bot.send_photo(value['tgid'], message.photo[-1].file_id, message.caption)
     if message.from_user.id != currentID:
         await message.reply("Все интересующие вас вопросы, можете уточнить у нашего менеджера: @MrJamesBrown", reply_markup=echo_reply_markup)
+    else:
+        for value in getUsers().values():
+            if value['tgid'] != currentID and currentID == message.from_user.id:
+                await bot.send_photo(value['tgid'], message.photo[-1].file_id, message.caption)
 
 
 # Текст с видео
 @dp.message_handler(content_types=["video"])
 async def echoPhoto(message: types.Message):
-    for value in getUsers().values():
-        if value['tgid'] != currentID and currentID == message.from_user.id:
-            await bot.send_video(value['tgid'], message.video.file_id, caption=message.caption)
     if message.from_user.id != currentID:
         await message.reply("Все интересующие вас вопросы, можете уточнить у нашего менеджера: @MrJamesBrown", reply_markup=echo_reply_markup)
+    else:
+        for value in getUsers().values():
+            if value['tgid'] != currentID and currentID == message.from_user.id:
+                await bot.send_video(value['tgid'], message.video.file_id, caption=message.caption)
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
