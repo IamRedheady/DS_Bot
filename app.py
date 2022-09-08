@@ -59,7 +59,7 @@ inline_kb1 = InlineKeyboardMarkup().add(inline_btn_1)
 async def send_welcome(message: types.Message):
     postData(message.from_user.id)
 
-    await message.reply(f"""Приветствуем Вас, в рядах последователей тайного мира наслаждений!
+    await bot.send_message(message.from_user.id, f"""Приветствуем Вас, в рядах последователей тайного мира наслаждений!
     
 Благодарим, что доверяете нам свой комфорт. 
 
@@ -81,7 +81,7 @@ async def echo(message: types.Message):
         if value['tgid'] != currentID and currentID == message.from_user.id:
             await bot.send_message(value['tgid'], message.text)
     if message.from_user.id != currentID:
-        await message.reply("Все интересующие вас вопросы, можете уточнить у нашего менеджера: @MrJamesBrown", reply_markup=echo_reply_markup)
+        await bot.send_message(message.from_user.id, "Все интересующие вас вопросы, можете уточнить у нашего менеджера: @MrJamesBrown", reply_markup=echo_reply_markup)
 
 
 # Текст с фото
