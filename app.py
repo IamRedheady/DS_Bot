@@ -59,11 +59,11 @@ inline_kb1 = InlineKeyboardMarkup().add(inline_btn_1)
 async def send_welcome(message: types.Message):
     postData(message.from_user.id)
 
-    await bot.send_message(message.from_user.id, f"""Приветствуем Вас, в рядах последователей тайного мира наслаждений!
+    await bot.send_photo(message.from_user.id, "https://ibb.co/q1wh7jj", caption=f"""Приветствуем Вас, в рядах последователей тайного мира наслаждений!
     
 Благодарим, что доверяете нам свой комфорт. 
 
-Мы будем напоминать, о предстоящих мероприятиях Dark Secrets, анонсы которых всегда можно посмотреть в нашем основном канале.""", parse_mode="markdown", disable_web_page_preview=True, reply_markup=inline_kb1)
+Мы будем напоминать, о предстоящих мероприятиях Dark Secrets, анонсы которых всегда можно посмотреть в нашем основном канале.""", parse_mode="markdown", reply_markup=inline_kb1)
 
 
 reply_btn_chat = InlineKeyboardButton(
