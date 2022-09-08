@@ -25,7 +25,6 @@ def postData(id):
     for value in rgetAnswer.values():
         print(value["tgid"])
         if value['tgid'] == id:
-            print("Существует")
             check = True
 
     if check:
