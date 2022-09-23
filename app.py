@@ -58,7 +58,11 @@ async def start1(update: types.ChatJoinRequest):
     # тут мы принимаем юзера в канал
     await update.approve()
     # а тут отправляем сообщение
-    await bot.send_message(chat_id=update.from_user.id, text="текст сообщения бота в лс юзеру")
+    await bot.send_photo(update.from_user.id, "https://ibb.co/q1wh7jj", caption=f"""Приветствуем Вас, в рядах последователей тайного мира наслаждений!
+    
+Благодарим, что доверяете нам свой комфорт. 
+
+Мы будем напоминать, о предстоящих мероприятиях Dark Secrets, анонсы которых всегда можно посмотреть в нашем основном канале.""", parse_mode="markdown", reply_markup=inline_kb1)
 
 
 # Приветствие
