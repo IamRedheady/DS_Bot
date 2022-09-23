@@ -60,12 +60,8 @@ async def start1(update: types.ChatJoinRequest):
     # а тут отправляем сообщение
     await bot.send_message(chat_id=update.from_user.id, text="текст сообщения бота в лс юзеру")
 
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
 
 # Приветствие
-
-
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
     postData(message.from_user.id)
