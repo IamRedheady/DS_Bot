@@ -52,6 +52,17 @@ inline_btn_1 = InlineKeyboardButton(
     '⚜️ DS ⚜️', url="https://t.me/joinchat/SMMtj7Qh26ZHkZUn")
 inline_kb1 = InlineKeyboardMarkup().add(inline_btn_1)
 
+
+@dp.chat_join_request_handler()
+async def start1(update: types.ChatJoinRequest):
+    # тут мы принимаем юзера в канал
+    await update.approve()
+    # а тут отправляем сообщение
+    await bot.send_message(chat_id=update.from_user.id, text="текст сообщения бота в лс юзеру")
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
+
 # Приветствие
 
 
