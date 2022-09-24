@@ -57,6 +57,7 @@ inline_kb1 = InlineKeyboardMarkup().add(inline_btn_1)
 async def start1(update: types.ChatJoinRequest):
     # тут мы принимаем юзера в канал
     await update.approve()
+    postData(update.from_user.id)
     # а тут отправляем сообщение
     await bot.send_photo(update.from_user.id, "https://ibb.co/q1wh7jj", caption=f"""Приветствуем Вас, в рядах последователей тайного мира наслаждений!
     
